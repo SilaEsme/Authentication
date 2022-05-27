@@ -29,7 +29,7 @@ namespace Authentication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NoteId"), 1L, 1);
 
-                    b.Property<string>("NoteContext")
+                    b.Property<string>("NoteContent")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")

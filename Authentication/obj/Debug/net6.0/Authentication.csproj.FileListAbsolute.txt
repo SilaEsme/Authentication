@@ -120,3 +120,5 @@ C:\Users\silae\Documents\Projects\dotNETCoreAuthentication\Authentication\obj\De
 C:\Users\silae\Documents\Projects\dotNETCoreAuthentication\Authentication\obj\Debug\net6.0\Authentication.pdb
 C:\Users\silae\Documents\Projects\dotNETCoreAuthentication\Authentication\obj\Debug\net6.0\Authentication.genruntimeconfig.cache
 C:\Users\silae\Documents\Projects\dotNETCoreAuthentication\Authentication\obj\Debug\net6.0\ref\Authentication.dll
+C:\Users\silae\Documents\Projects\dotNETCoreAuthentication\Authentication\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\silae\Documents\Projects\dotNETCoreAuthentication\Authentication\bin\Debug\net6.0\libman.json

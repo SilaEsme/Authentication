@@ -1,9 +1,11 @@
 using Authentication.Models;
 using Microsoft.EntityFrameworkCore;
+using Authentication.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddSignalR();
 builder.Services.AddSession();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddControllersWithViews();
@@ -27,8 +29,10 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 
+app.MapHub<NoteHub>("/noteHub");
+
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Account}/{action=Index}/{id?}");
+    "default",
+    "{controller=Account}/{action=Index}/{id?}");
 
 app.Run();
