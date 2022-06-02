@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Authentication.Controllers;
 
@@ -19,7 +20,6 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        ViewData["Notes"] = GetAllNotes();
         return View("Index");
     }
 
@@ -28,10 +28,11 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
-
-    private List<Note> GetAllNotes()
+    [HttpGet]
+    public IActionResult GetAllNotes()
     {
-        return _authenticationContext.Notes.Where(n => n.UserId == HttpContext.Session.GetInt32("UserId")).ToList();
+        return Json(
+            _authenticationContext.Notes.Where(n => n.UserId == HttpContext.Session.GetInt32("UserId")).ToList(),  new JsonSerializerSettings());
     }
     [HttpPost]
     public async Task<IActionResult> Save(Note model)

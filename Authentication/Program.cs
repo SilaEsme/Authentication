@@ -5,6 +5,8 @@ using Authentication.Hubs;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddMvcCore().AddNewtonsoftJson();
+builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
 builder.Services.AddSession();
 builder.Services.AddDistributedMemoryCache();
@@ -34,5 +36,10 @@ app.MapHub<NoteHub>("/noteHub");
 app.MapControllerRoute(
     "default",
     "{controller=Account}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints => {
+    endpoints.MapControllers(); // enables controllers in endpoint routing
+    endpoints.MapDefaultControllerRoute(); // adds the default route {controller=Home}/{action=Index}/{id?}
+});
 
 app.Run();
